@@ -1,10 +1,16 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import User
-from .forms import ReviewForm,UpdateProfile
+from .forms import ,UpdateProfile
 from .. import db,photos
 from flask_login import login_required
 
+
+
+@main.route("/")
+def index():
+    title="Home"
+    return render_template("index.html",title=title)
 
 
 @main.route('/user/<uname>')
@@ -33,7 +39,7 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
-    
+
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
 def update_pic(uname):

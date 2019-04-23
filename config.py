@@ -2,9 +2,9 @@ import os
  
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lilian:12345@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lilian:12345@localhost/pitch'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    
+
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     #  email configurations
