@@ -51,3 +51,18 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
+@main.route('/pitch/new', methods = ['GET','POST'])
+@login_required
+def new_pitch(id):
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        category = form.category.data
+
+        new_pitch = Pitch(id=id,title=title,content=content,category=category,posted=posted,upvote=upvote,downvote=downvote,comment=comment)
+        new_pitch.save_pitch()
+        return redirect(url_for('index.html'))
+    title = 'New Pitch'
+    return render_template('new_pitch.html',title=title,pitch_form=form)
+
+

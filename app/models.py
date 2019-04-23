@@ -2,6 +2,7 @@ from .import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -19,6 +20,8 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     # profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
+    pitch = db.relationship('Pitch',backref = 'id',lazy ="dynamic")
+
 
     def __repr__(self):
         return f'User {self.username}'
@@ -47,4 +50,25 @@ class Role(db.Model):
 
 
     def __repr__(self):
-        return f'User {self.name}'       
+        return f'User {self.name}'  
+
+class Pitch(db.Model):
+    __tablename__ = 'pitches'
+    id = db.Column(db.Integer,primary_key = True)
+    content = db.Column(db.String(500))
+    title = db.Column(db.String)
+    category = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    upvote = db.Column(db.Integer)
+    downvote = db.Column(db.Integer)
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_pitch(id,category): 
+        pitch = Pitch.query.filter_by(category = category).all()
+        return pitch  
+
+
