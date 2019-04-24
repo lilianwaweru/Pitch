@@ -12,6 +12,37 @@ def index():
     title="Home"
     return render_template("index.html",title=title)
 
+@main.route('/')
+def index():
+    pickup = Pitch.get_pitch('pickup')
+    interview = Pitch.get_pitch('interview')
+    product = Pitch.get_pitch('product')
+    promotion = Pitch.get_pitch('promotion')
+
+    return render_template('index.html', title = 'Pitch- Home', pickup = pickup, interview = interview, promotion = promotion, product = product)
+
+
+@main.route('/pitch/interview')
+def interview():
+    pitch = Pitch.get_pitch('interview')
+
+    return render_template('interview.html',pitch = pitch)
+
+@main.route('/pitch/pickup')
+def interview():
+    pitch = Pitch.get_pitch('pickup')
+    return render_template('pickup.html',pitch = pitch)
+
+@main.route('/pitch/promotion')
+def interview():
+    pitch = Pitch.get_pitch('promotion')
+    return render_template('promotion',pitch = pitch)
+
+@main.route('/pitch/product')
+def interview():
+    pitch = Pitch.get_pitch('product')
+    return render_template('product',pitch = pitch)
+
 
 @main.route('/user/<uname>')
 def profile(uname):
