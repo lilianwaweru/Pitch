@@ -71,4 +71,24 @@ class Pitch(db.Model):
         pitch = Pitch.query.filter_by(category = category).all()
         return pitch  
 
+    def __repr__(self):
+        return f'Pitch {self.pitch_title}, {self.category}'
 
+class Comment(db.Model):
+    __tablename__ = 'comment'
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String(1000))
+    user_id = db.Column(db.Integer,db.ForeignKey("user_id"))
+    pitch = db.Column(db.Integer,db.ForeignKey("pitch.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+   @classmethod
+    def get_comment(id,pitch):
+        comment = Comment.query.filter_by(pitch_id = pitch).all()
+        return comment
+
+      def __repr__(self):
+        return f'Comment{self.comment}'    

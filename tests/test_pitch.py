@@ -1,7 +1,11 @@
-from app.models import User
+from app.models import Pitch
 from app import db
 
 
+
+import unittest
+
+class UserModelTest(unittest.TestCase):
 def setUp(self):
     self.new_user = User(username = 'lilian',password = 'banana',email='test@mail.com')
     self.new_pitch = Pitch(id =12,title = 'Pitch',content = 'content',category = 'product',upvote = 0,downvote = 0)
