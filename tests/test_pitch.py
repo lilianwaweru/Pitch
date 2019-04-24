@@ -13,6 +13,7 @@ def setUp(self):
 def tearDown(self):
     User.query.delete()
     Pitch.query.delete()
+    Comment.query.delete()
 
 def test_check_instance(self):
     self.assertEquals(self.new_pitch.pitch_title,'Pitch')
