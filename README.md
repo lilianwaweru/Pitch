@@ -2,14 +2,7 @@
 is a web application is meant for users to post various pitches on various categories which are interviews,pickup lines,promotion,product
 
 ## Author
-[LILIAN MUTHONI WAWERU](https://github.com/Antavio)
-
-
-```* Technology
-* Business
-* Interview
-* Pick-Up Line
-* Promotion```
+[LILIAN MUTHONI WAWERU](https://github.com/lilianwaweru)
 
 ### Project Setup instructions
 Use the following commands to use this project.
