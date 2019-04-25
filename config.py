@@ -2,7 +2,7 @@ import os
  
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lilian:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:12345@localhost/lilo'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -14,20 +14,16 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
-    SIMPLEMDE_JS_IIFE = True
-    SIMPLEMDE_USE_CDN = True
+    # SIMPLEMDE_JS_IIFE = True
+    # SIMPLEMDE_USE_CDN = True
 
 class ProdConfig(Config):
     pass
 
-# class DevConfig(Config):
-    
-#     DEBUG = True
-   
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lilian:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:12345@localhost/lilo'
 class DevConfig(Config):
-   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lilian:12345@localhost/pitch'
+   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:12345@localhost/lilo'
    DEBUG = True
 
 

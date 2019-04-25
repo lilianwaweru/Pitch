@@ -1,25 +1,18 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User
-from .forms import UpdateProfile
+from ..models import User,Pitch,Comment
+from .forms import UpdateProfile,PitchForm,CommentForm
 from .. import db,photos
 from flask_login import login_required
 
-
-
-@main.route("/")
-def index():
-    title="Home"
-    return render_template("index.html",title=title)
-
 @main.route('/')
 def index():
-    pickup = Pitch.get_pitch('pickup')
-    interview = Pitch.get_pitch('interview')
-    product = Pitch.get_pitch('product')
-    promotion = Pitch.get_pitch('promotion')
+    # pickup = Pitch.get_pitch('pickup')
+    # interview = Pitch.get_pitch('interview')
+    # product = Pitch.get_pitch('product')
+    # promotion = Pitch.get_pitch('promotion')
 
-    return render_template('index.html', title = 'Pitch- Home', pickup = pickup, interview = interview, promotion = promotion, product = product)
+    return render_template('index.html')
 
 
 @main.route('/pitch/interview')
@@ -29,19 +22,27 @@ def interview():
     return render_template('interview.html',pitch = pitch)
 
 @main.route('/pitch/pickup')
-def interview():
-    pitch = Pitch.get_pitch('pickup')
-    return render_template('pickup.html',pitch = pitch)
+@login_required
+def pickup():
+    pitch_form = PitchForm()
+
+    if pitch_form.validate_on_submit():
+        pitch = pitch_form.pitch.data
+        category = pitch_form.category.data
+
+        new_pitch = Pitch(pitch_content=pitch,pitch_category = category,user = current_user)
+        new_pitch.save_pitch()
+
+    all_pitches = Pitch.get_all_pitches()
+
+    return render_template('pickup.html',pitch_form = pitch_form, pitches = all_pitches)
 
 @main.route('/pitch/promotion')
-def interview():
+def promotion():
     pitch = Pitch.get_pitch('promotion')
     return render_template('promotion',pitch = pitch)
 
-@main.route('/pitch/product')
-def interview():
-    pitch = Pitch.get_pitch('product')
-    return render_template('product',pitch = pitch)
+
 
 
 @main.route('/user/<uname>')
@@ -96,4 +97,43 @@ def new_pitch(id):
     title = 'New Pitch'
     return render_template('new_pitch.html',title=title,pitch_form=form)
 
+@main.route('/Pitch', methods = ['GET', 'POST'])
+@login_required
+def pitches():
+    pitch_form = PitchForm()
+    
+    if pitch_form.validate_on_submit():
+        pitch = pitch_form.pitch.data
+        cat = pitch_form.category.data
 
+        new_pitch = Pitch(content=pitch, category = cat)
+        new_pitch.save_pitch()
+
+        return redirect(url_for('main.pitches'))
+
+    all_pitches = Pitch.get_all_pitches()
+    
+    return render_template('new_pitch.html', pitch_form = pitch_form, pitches = all_pitches)
+
+
+@main.route('/comments/<int:id>',methods = ['GET','POST'])
+@login_required
+def comment(id):
+    
+    my_pitch = Pitch.query.get(id)
+    comment_form = CommentForm()
+
+    if id is None:
+        abort(404)
+
+    if comment_form.validate_on_submit():
+        comment_data = comment_form.comment.data
+        new_comment = Comment(comment = comment_data, pitch_id = id)
+        new_comment.save_comment()
+
+        return redirect(url_for('main.comment',id=id))
+
+    all_comments = Comment.get_comment(id)
+
+
+    return render_template('comments.html',pitch = my_pitch, comment_form = comment_form, comments = all_comments)
