@@ -8,4 +8,7 @@
 
     {%block styles %}
     {{super()}}
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
     {%endblock%}
