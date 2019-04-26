@@ -1,4 +1,5 @@
-##PITCH
+### PITCH
+
 is a web application is meant for users to post various pitches on various categories which are interviews,pickup lines,promotion,product
 
 ## Author
@@ -23,7 +24,7 @@ The different technologies that were used to develop this program include:
 2. Bootstrap
 3. HTML
 4. CSS
-5.Postgresql```
+5.Postgresql
 
 ### BDD
 | INPUT                           | OUTPUT                                                                          |
@@ -31,14 +32,18 @@ The different technologies that were used to develop this program include:
 | when you interact with the page | you will see a sign in button or you to sign in                                 |
 | when you sign in                | A form will appear and you sign up and you will receive an email to welcome you |
 | after signing in                | you will be able to pitch and choose a category and can also comment on a pitch |
-
+|                                 |                                                                                 |
 
 ### Link to live site
-Here is a link to the live site https://revolutionarypitches.herokuapp.com/
+Here is a link to the live site 
 ### Contact Me
-If you have any suggestions, additions or modifications on this project you can reach me via my email: njuguna13@gmail.com
+contact me via email lilowesh.lw@gmail.com or slack me via lilian waweru
 
 ### License  & Copyright information
 Copyright (c) 2019 LilianWaweru
 
 [MIT License](./LICENSE)
+
+
+
+
