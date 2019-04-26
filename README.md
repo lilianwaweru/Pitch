@@ -24,21 +24,21 @@ The different technologies that were used to develop this program include:
 3. HTML
 4. CSS
 5.Postgresql```
+
+### BDD
+| INPUT                           | OUTPUT                                                                          |
+|---------------------------------|---------------------------------------------------------------------------------|
+| when you interact with the page | you will see a sign in button or you to sign in                                 |
+| when you sign in                | A form will appear and you sign up and you will receive an email to welcome you |
+| after signing in                | you will be able to pitch and choose a category and can also comment on a pitch |
+
+
 ### Link to live site
 Here is a link to the live site https://revolutionarypitches.herokuapp.com/
 ### Contact Me
 If you have any suggestions, additions or modifications on this project you can reach me via my email: njuguna13@gmail.com
 
 ### License  & Copyright information
-Copyright (c) 2019 Anthony Njuguna
+Copyright (c) 2019 LilianWaweru
 
 [MIT License](./LICENSE)
-Antavio
-Eat-Sleep-Code
-Location
-Nairobi - Kenya
-Repositories
-27
-Followers
-1
-@AntavioFeb 23rd, 2015Added by GitHub
