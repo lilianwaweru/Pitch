@@ -25,6 +25,7 @@ The different technologies that were used to develop this program include:
 3. HTML
 4. CSS
 5.Postgresql
+```
 
 ### BDD
 | INPUT                           | OUTPUT                                                                          |
