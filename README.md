@@ -7,7 +7,7 @@ is a web application is meant for users to post various pitches on various categ
 
 ### Project Setup instructions
 Use the following commands to use this project.
-- git clone `https://github.com/lilianwaweru/Pitch.git`
+- git clone `https://github.com/lilianwaweru/Pitch`
 - install `python 3.6`
 - Install [Postgresql](https://www.postgresql.org/download/)
 - cd Pitch
